@@ -18,7 +18,7 @@ namespace ConsumirNFLWinForms.Service
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:5238/");
+            _httpClient.BaseAddress = new Uri("https://10.0.0.31:5238/");
         }
 
         public async Task<bool> LoginAsync(string username, string password)
@@ -35,7 +35,7 @@ namespace ConsumirNFLWinForms.Service
             using var client = new HttpClient(handler);
 
             // Asegúrate de usar la URL completa
-            var response = await client.PostAsync("https://localhost:5238/api/auth/login", content);
+            var response = await client.PostAsync("https://10.0.0.31:5238/api/auth/login", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -58,7 +58,7 @@ namespace ConsumirNFLWinForms.Service
             };
 
             using var client = new HttpClient(handler);
-            client.BaseAddress = new Uri("https://localhost:5238/");
+            client.BaseAddress = new Uri("https://10.0.0.31:5238/");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
             var response = await client.GetAsync("api/Team");
